@@ -1,0 +1,32 @@
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Author</th>
+        <th scope="col">Language</th>
+        <th scope="col">Pages</th>
+        <th scope="col">Publish Date</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-info" *ngFor="let item of books">
+        <th scope="row">{{item.id}}</th>
+        <td>{{item.name}}</td>
+        <td>{{item.author}}</td>
+        <td>{{item.language}}</td>
+        <td>{{item.pages}}</td>
+        <td>{{item.publishDate | date}}</td>
+        <td><button class="btn btn-success" [routerLink]="['/edit-book/',item.id]">Update</button></td>
+        <td><button class="btn btn-danger" (click)="buttonClicked(item.id, item.name)">Delete</button></td>       
+      </tr>
+    </tbody>
+  </table>
+<hr>
+<div *ngIf="deleteBookModal">
+    <app-books-deletebook [id]="bookId" [bookName]="bookName"> </app-books-deletebook>
+</div>
+
+
