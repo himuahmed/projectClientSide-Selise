@@ -13,13 +13,14 @@ import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatDatepickerModule } from '@angular/material/datepicker';
- 
+import {MatTableModule} from '@angular/material/table';
 
 import {MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BooksEditbookComponent } from './books-editbook/books-editbook.component';
 import { BooksDeletebookComponent } from './books-deletebook/books-deletebook.component';
-
+import { MatSortModule } from '@angular/material/sort';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -42,6 +43,9 @@ import { BooksDeletebookComponent } from './books-deletebook/books-deletebook.co
     MatDatepickerModule,
     MatInputModule,
     MatFormFieldModule,
+    MatTableModule,
+    MatSortModule,
+    MatButtonModule
    
   ],
   providers: [BookService],

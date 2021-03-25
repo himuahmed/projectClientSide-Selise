@@ -1,0 +1,12 @@
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.mat-success {
+    background-color:rgb(44, 150, 44);
+    color: #fff;
+}

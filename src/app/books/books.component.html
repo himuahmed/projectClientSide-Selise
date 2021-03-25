@@ -1,29 +1,54 @@
-<table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Name</th>
-        <th scope="col">Author</th>
-        <th scope="col">Language</th>
-        <th scope="col">Pages</th>
-        <th scope="col">Publish Date</th>
-        <th scope="col">Edit</th>
-        <th scope="col">Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="table-info" *ngFor="let item of books">
-        <th scope="row">{{item.id}}</th>
-        <td>{{item.name}}</td>
-        <td>{{item.author}}</td>
-        <td>{{item.language}}</td>
-        <td>{{item.pages}}</td>
-        <td>{{item.publishDate | date}}</td>
-        <td><button class="btn btn-success" [routerLink]="['/edit-book/',item.id]">Update</button></td>
-        <td><button class="btn btn-danger" (click)="buttonClicked(item.id, item.name)">Delete</button></td>       
-      </tr>
-    </tbody>
-  </table>
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="Id">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header="no"> No. </th>
+    <td mat-cell *matCellDef="let book"> {{book.id}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="Name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header="name"> Name </th>
+    <td mat-cell *matCellDef="let book"> {{book.name}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="Author">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header="author"> Author </th>
+    <td mat-cell *matCellDef="let book"> {{book.author}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="Pages">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header="pages"> Pages </th>
+    <td mat-cell *matCellDef="let book"> {{book.pages}} </td>
+  </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Language">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="language"> Language </th>
+      <td mat-cell *matCellDef="let book"> {{book.language}} </td>
+    </ng-container>
+
+      <!-- Symbol Column -->
+  <ng-container matColumnDef="PublishDate">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header="publishDate"> PublishDate </th>
+    <td mat-cell *matCellDef="let book"> {{book.publishDate | date}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Edit">
+    <th mat-header-cell *matHeaderCellDef > Edit </th>
+    <td mat-cell *matCellDef="let book"> <button mat-raised-button color="success" [routerLink]="['/edit-book/',book.id]">Update</button> </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Delete">
+    <th mat-header-cell *matHeaderCellDef> Delete </th>
+    <td mat-cell *matCellDef="let book"> <button mat-raised-button color="warn" (click)="buttonClicked(book.id, book.name)">Delete</button> </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
 <hr>
 <div *ngIf="deleteBookModal">
     <app-books-deletebook [id]="bookId" [bookName]="bookName"> </app-books-deletebook>
