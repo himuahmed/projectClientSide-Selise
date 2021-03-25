@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { book } from '../_models/book';
-import { BookService } from '../_services/book.service';
+
+import { book } from '../../models/book';
+import { BookService } from '../../services/book.service';
 
 
 @Component({

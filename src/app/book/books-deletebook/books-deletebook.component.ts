@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BookService } from '../_services/book.service';
+
+import { BookService } from '../../services/book.service';
 
 @Component({
   selector: 'app-books-deletebook',

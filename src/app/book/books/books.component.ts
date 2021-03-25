@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { BookService } from '../_services/book.service';
-import {MatTableDataSource} from '@angular/material/table';
-import { book } from '../_models/book';
+import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+
+import { BookService } from 'src/app/services/book.service';
+import { book } from 'src/app/models/book';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class BooksComponent implements OnInit {
   bookName:string;
   deleteBookModal = false;
   displayedColumns: string[] = ['Id', 'Name', 'Author', 'Language', 'Pages', 'PublishDate', 'Edit', 'Delete'];
-  dataSource = new MatTableDataSource<book>(this.books);
+  datasource = new MatTableDataSource<book>(this.books);
 
   @ViewChild(MatSort) sort: MatSort;
   constructor(private bookService: BookService) { }
@@ -26,7 +27,7 @@ export class BooksComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
+    this.datasource.sort = this.sort;
   }
 
   buttonClicked(id,name)
@@ -39,7 +40,7 @@ export class BooksComponent implements OnInit {
 
   getAllBooks(){
    this.bookService.getAllBooks().subscribe((b: book[]) => {
-     this.dataSource.data = b;
+     this.datasource.data = b;
    },error=>{
      console.log("Failed to fetch book records.")
    });

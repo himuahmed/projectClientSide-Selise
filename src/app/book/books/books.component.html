@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+<table mat-table [dataSource]="datasource" matSort class="mat-elevation-z8">
 
   <!-- Position Column -->
   <ng-container matColumnDef="Id">
@@ -38,7 +38,7 @@
 
   <ng-container matColumnDef="Edit">
     <th mat-header-cell *matHeaderCellDef > Edit </th>
-    <td mat-cell *matCellDef="let book"> <button mat-raised-button color="success" [routerLink]="['/edit-book/',book.id]">Update</button> </td>
+    <td mat-cell *matCellDef="let book"> <button mat-raised-button color="success" [routerLink]="['edit-book/',book.id]">Update</button> </td>
   </ng-container>
 
   <ng-container matColumnDef="Delete">
