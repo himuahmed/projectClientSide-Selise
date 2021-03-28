@@ -5,6 +5,8 @@ import { MatSort } from '@angular/material/sort';
 import { BookService } from 'src/app/services/book.service';
 import { book } from 'src/app/models/book';
 
+import { interval, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-books',
@@ -12,6 +14,8 @@ import { book } from 'src/app/models/book';
   styleUrls: ['./books.component.css']
 })
 export class BooksComponent implements OnInit {
+
+  unsubscribe$ = new Subject()
   books: book[]=[];
   bookId:number;
   bookName:string;
@@ -30,6 +34,11 @@ export class BooksComponent implements OnInit {
     this.datasource.sort = this.sort;
   }
 
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
+
   buttonClicked(id,name)
   {
     this.deleteBookModal = true;
@@ -39,10 +48,10 @@ export class BooksComponent implements OnInit {
 
 
   getAllBooks(){
-   this.bookService.getAllBooks().subscribe((b: book[]) => {
+   this.bookService.getAllBooks().pipe(takeUntil(this.unsubscribe$)).subscribe((b: book[]) => {
      this.datasource.data = b;
    },error=>{
-     console.log("Failed to fetch book records.")
+     console.log("Failed to fetch book records.");
    });
   }
 

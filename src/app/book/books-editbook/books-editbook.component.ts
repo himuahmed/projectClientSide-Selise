@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
 import { book } from '../../models/book';
 import { BookService } from '../../services/book.service';
 
@@ -11,6 +14,7 @@ import { BookService } from '../../services/book.service';
   styleUrls: ['./books-editbook.component.css']
 })
 export class BooksEditbookComponent implements OnInit {
+  unsubscribe$ = new Subject();
   book:book;
   editBookForm: FormGroup;
   constructor(private _formBuilder: FormBuilder, private _bookService:BookService,private _activatedRoute: ActivatedRoute) { }
@@ -18,6 +22,12 @@ export class BooksEditbookComponent implements OnInit {
   ngOnInit(): void {
     this.getBookById();
   }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
+
 
   editBookFormMethod(){
     this.editBookForm = this._formBuilder.group({
@@ -30,7 +40,8 @@ export class BooksEditbookComponent implements OnInit {
   }
 
   getBookById(){
-    this._bookService.getBookById(+this._activatedRoute.snapshot.params['id']).subscribe((b:book)=>{
+    let bookId = this._activatedRoute.snapshot.params['id'];
+    this._bookService.getBookById(+bookId).pipe(takeUntil(this.unsubscribe$)).subscribe((b:book)=>{
       this.book = b;
       var date = new Date(this.book.publishdate);
       let newDate = JSON.stringify(date);
@@ -45,7 +56,8 @@ export class BooksEditbookComponent implements OnInit {
 
   editBook(){
     this.book = Object.assign({},this.editBookForm.value);
-    this._bookService.editBook(this.book,+this._activatedRoute.snapshot.params['id']).subscribe(next=>{
+    let bookId = this._activatedRoute.snapshot.params['id'];
+    this._bookService.editBook(this.book,+bookId).subscribe(next=>{
       alert('updated book info.');
       this.editBookForm.reset(this.book);
     },error=>{

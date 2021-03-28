@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
 import { BookService } from '../../services/book.service';
 
 @Component({
@@ -9,7 +12,7 @@ import { BookService } from '../../services/book.service';
   styleUrls: ['./books-deletebook.component.css']
 })
 export class BooksDeletebookComponent implements OnInit {
-
+  unsubscribe$ = new Subject();
   @Input() id:number;
   @Input() bookName:string;
   constructor(private _bookService:BookService, private _router: Router) { }
@@ -18,6 +21,12 @@ export class BooksDeletebookComponent implements OnInit {
     console.log(this.id);
   }
 
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
+
+
   cancel()
   {
     location.reload();
@@ -25,7 +34,7 @@ export class BooksDeletebookComponent implements OnInit {
 
   deleteBook()
   {
-    this._bookService.deleteBook(this.id).subscribe(next=>{
+    this._bookService.deleteBook(this.id).pipe(takeUntil(this.unsubscribe$)).subscribe(next=>{
       alert("Record Deleted.");
       location.reload();
     },error=>{
