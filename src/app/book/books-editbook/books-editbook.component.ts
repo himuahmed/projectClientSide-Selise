@@ -28,7 +28,6 @@ export class BooksEditbookComponent implements OnInit {
     this.unsubscribe$.complete();
   }
 
-
   editBookFormMethod(){
     this.editBookForm = this._formBuilder.group({
       name:[this.book.name,[Validators.required,Validators.minLength(1)]],

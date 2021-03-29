@@ -11,6 +11,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { BookComponent } from './book.component';
 import { BooksComponent } from './books/books.component';
@@ -21,6 +22,8 @@ import { BooksDeletebookComponent } from './books-deletebook/books-deletebook.co
 import { BookService } from '../services/book.service';
 
 import { BookRoutes } from './book.routing';
+import { ProgressSpinnerService } from '../services/progressSpinner.service';
+import { AllInterceptors } from 'src/interceptors';
 
 
 @NgModule({
@@ -45,9 +48,14 @@ import { BookRoutes } from './book.routing';
     MatTableModule,
     MatSortModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
     BookRoutes
   ],
-  providers: [BookService],
+  providers: [
+    BookService,
+    ProgressSpinnerService,
+    AllInterceptors,
+  ],
   bootstrap: [BookComponent]
 })
 export class BookModule { }

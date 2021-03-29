@@ -1,5 +1,4 @@
 <table mat-table [dataSource]="datasource" matSort class="mat-elevation-z8">
-
   <!-- Position Column -->
   <ng-container matColumnDef="Id">
     <th mat-header-cell *matHeaderCellDef mat-sort-header="no"> No. </th>
@@ -49,8 +48,10 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-<hr>
+<mat-spinner [diameter]="120" *ngIf="showSpinner.value"></mat-spinner>
+
 <div *ngIf="deleteBookModal">
+  <hr>
     <app-books-deletebook [id]="bookId" [bookName]="bookName"> </app-books-deletebook>
 </div>
 

@@ -10,3 +10,11 @@ th.mat-sort-header-sorted {
     background-color:rgb(44, 150, 44);
     color: #fff;
 }
+
+.mat-spinner {
+  position: fixed;
+  z-index: 1031;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

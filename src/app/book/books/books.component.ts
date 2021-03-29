@@ -7,6 +7,7 @@ import { book } from 'src/app/models/book';
 
 import { interval, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { ProgressSpinnerService } from 'src/app/services/progressSpinner.service';
 
 @Component({
   selector: 'app-books',
@@ -22,12 +23,15 @@ export class BooksComponent implements OnInit {
   deleteBookModal = false;
   displayedColumns: string[] = ['Id', 'Name', 'Author', 'Language', 'Pages', 'PublishDate', 'Edit', 'Delete'];
   datasource = new MatTableDataSource<book>(this.books);
+  showSpinner =  this._progressSpinnerService.showSpinner;
+
 
   @ViewChild(MatSort) sort: MatSort;
-  constructor(private bookService: BookService) { }
+  constructor(private bookService: BookService, private _progressSpinnerService: ProgressSpinnerService) { }
 
   ngOnInit(): void {
     this.getAllBooks();
+    
   }
 
   ngAfterViewInit() {
