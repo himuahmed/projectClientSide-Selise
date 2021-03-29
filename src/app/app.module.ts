@@ -19,7 +19,6 @@ import { appRoutes } from './routes';
     BookModule,
     HomeModule
   ],
-
   bootstrap: [AppComponent]
 })
 export class AppModule { }
