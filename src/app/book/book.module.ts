@@ -12,12 +12,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatCardModule} from '@angular/material/card';
 
 import { BookComponent } from './book.component';
 import { BooksComponent } from './books/books.component';
 import { BooksAddbookComponent } from './books-addbook/books-addbook.component';
 import { BooksEditbookComponent } from './books-editbook/books-editbook.component';
 import { BooksDeletebookComponent } from './books-deletebook/books-deletebook.component';
+import {MatBadgeModule} from '@angular/material/badge';
 
 import { BookService } from '../services/book.service';
 
@@ -49,6 +51,8 @@ import { AllInterceptors } from 'src/interceptors';
     MatSortModule,
     MatButtonModule,
     MatProgressSpinnerModule,
+    MatCardModule,
+    MatBadgeModule,
     BookRoutes
   ],
   providers: [

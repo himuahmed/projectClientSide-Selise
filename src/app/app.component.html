@@ -1,19 +1,14 @@
+<section>
+  <mat-toolbar color="primary">
+    <span class="mr"><b>Book Records</b></span>
+    <a mat-button [routerLink]="['']" class="ml-3">Home</a>
+    <a mat-button [routerLink]="['books']"  class="ml-3">Book List</a>
+    <a mat-button [routerLink]="['books/addbook']"  class="ml-3">Add New Book</a>
+  </mat-toolbar>
+</section>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-info">
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['']" >Home</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['books']" >Book List</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['books/addbook']" >Add New Book</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-<div class="container mt-1">
+
+<div class="container mt">
   <router-outlet></router-outlet>
 </div>
+

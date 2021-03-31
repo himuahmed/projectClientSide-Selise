@@ -1,10 +1,9 @@
-<div class="card">
-    <div class="card-header">
-      Delete Book.
-    </div>
-    <div class="card-body">
-    <p class="card-text">Would you like to delete the book "<strong>{{bookName}}</strong>" ?</p>
-    <button class="btn btn-danger mr-3" (click)="deleteBook()">Confirm</button>
-    <button class="btn btn-success" (click)="cancel()">Cancel</button>
-    </div>
-</div>
+<mat-card class="mt">
+  <mat-card-content>
+    <p>Would you like to delete the book "<strong>{{bookName}}</strong>" ?</p>
+  </mat-card-content>
+  <mat-card-footer>
+    <button mat-flat-button color="warn" (click)="deleteBook()">Confirm</button>
+    <button mat-flat-button color="primary" (click)="cancel()">Cancel</button>
+  </mat-card-footer>
+</mat-card>

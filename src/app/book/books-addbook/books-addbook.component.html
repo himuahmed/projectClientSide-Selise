@@ -1,71 +1,65 @@
-<form [formGroup]="booksToBeInserted" (ngSubmit)="showRecords()" class="mt-2">
+<form [formGroup]="booksToBeInserted" (ngSubmit)="showRecords()" class="mt">
+  <div formArrayName="booksArray">
+    <div *ngFor="let book of booksToBeInserted.controls.booksArray['controls']; let i=index" [formGroupName]='i'>
+      <mat-card class="mb">
+        <mat-card-title class="text-center">       
+            Book Info
+        </mat-card-title>
 
-<div formArrayName="booksArray">
-  <div *ngFor="let book of booksToBeInserted.controls.booksArray['controls']; let i=index" [formGroupName]='i'>
-    <div class="card mb-3">
-      <div class="card-header text-center">
-        <b>Book Info.</b>
-      </div>
-      <div class="card-body">
-        <div class="form-group">
-          <input [ngClass]="{'is-invalid': book.get('name').errors && book.get('name').touched}" class="form-control"
-            placeholder="Name" formControlName="name">
-            <div class="invalid-feedback" *ngIf="book.get('name').touched && book.get('name').hasError('required')">Name is required.</div>
-            <div class="invalid-feedback" *ngIf="book.get('name').hasError('minlength') && book.get('name').touched">
-              Name should at least 4 characters long.
-            </div>
+        <mat-form-field class="example-full-width">
+          <mat-label>Book name</mat-label>
+          <input type="text" matInput [formControl]="book.get('name')" placeholder="Book Name">
+          <mat-error *ngIf="book.get('name').hasError('minlength') && book.get('name').touched">
+            Name should at least 4 characters long.
+          </mat-error>
+          <mat-error *ngIf="book.get('name').touched && book.get('name').hasError('required')">
+            Book name is <strong>required.</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Author name</mat-label>
+          <input type="text" matInput [formControl]="book.get('author')" placeholder="Author name.">
+          <mat-error *ngIf="book.get('author').hasError('minlength') && book.get('author').touched">
+            Name should at least 4 characters long.
+          </mat-error>
+          <mat-error *ngIf="book.get('author').touched && book.get('author').hasError('required')">
+            Author name is <strong>required.</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Language</mat-label>
+          <input type="text" matInput [formControl]="book.get('language')" placeholder="Language">
+          <mat-error *ngIf="book.get('language').hasError('minlength') && book.get('language').touched">
+            Name should at least 4 characters long.
+          </mat-error>
+          <mat-error *ngIf="book.get('language').touched && book.get('language').hasError('required')">
+            Author name is <strong>required.</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Total page</mat-label>
+          <input type="number" matInput [formControl]="book.get('pages')" placeholder="Total Page">
+          <mat-error *ngIf="book.get('pages').touched && book.get('pages').hasError('required')">
+            Author name is <strong>required.</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Publish date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="publishdate">            
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        </mat-form-field>
+
+        <div>
+          <button  *ngIf="booksToBeInserted.controls.booksArray.controls.length > 1" (click)="deleteBookFromArray(i)" mat-flat-button color="warn">Remove this record</button>
         </div>
-      
-        <div class="form-group">
-          <input [ngClass]="{'is-invalid': book.get('author').errors && book.get('author').touched}" class="form-control"
-            placeholder="author" formControlName="author">
-            <div class="invalid-feedback" *ngIf="book.get('author').touched && book.get('author').hasError('required')">Author is required.</div>
-            <div class="invalid-feedback" *ngIf="book.get('author').hasError('author') && book.get('author').touched">
-              Enter a valid author name.
-            </div>
-        </div>
-      
-        <div class="form-group">
-          <input [ngClass]="{'is-invalid': book.get('language').errors && book.get('language').touched}" class="form-control"
-            placeholder="language" formControlName="language">
-            <div class="invalid-feedback" *ngIf="book.get('language').touched && book.get('language').hasError('required')">language is required.</div>
-            <div class="invalid-feedback" *ngIf="book.get('language').hasError('minlength') && book.get('language').touched">
-                language should at least 4 characters long.
-            </div>
-        </div>
-    
-        <div class="form-group">
-            <input type="number" [ngClass]="{'is-invalid': book.get('pages').errors && book.get('pages').touched}" class="form-control"
-              placeholder="pages" formControlName="pages">
-              <div class="invalid-feedback" *ngIf="book.get('pages').touched && book.get('pages').hasError('required')">pages is required.</div>
-              <div class="invalid-feedback" *ngIf="book.get('pages').hasError('minlength') && book.get('pages').touched">
-                pages should at least 4 characters long.
-              </div>
-          </div>
-    
-          <div class="form-group">
-              <label>Publish Date:</label><br>
-            <mat-form-field class="mr-5">
-                <mat-label>Choose a date</mat-label>
-                <input matInput [matDatepicker]="picker" formControlName="publishdate">            
-                <mat-datepicker #picker></mat-datepicker>
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            </mat-form-field>
-            <button *ngIf="booksToBeInserted.controls.booksArray.controls.length > 1" (click)="deleteBookFromArray(i)" class="btn btn-danger">Remove this record </button>
-          </div>
-      </div>
+      </mat-card>   
     </div>
-
-
-
-      
   </div>
-</div>
-
-  <div class="mb-5">
-    <button  type="button" (click)="addNewBookForm()" class="btn btn-primary">Add New Record</button> <hr>
-  </div>
-  
- 
-  <button [disabled]="!booksToBeInserted.valid" type="submit" class="btn btn-success mr-sm-2">Add Books</button>
-  </form>
+  <button  type="button" (click)="addNewBookForm()" mat-flat-button color="primary">Add New Record</button>
+  <button [disabled]="!booksToBeInserted.valid" type="submit" mat-flat-button color="accent" >Save Books</button>
+</form>

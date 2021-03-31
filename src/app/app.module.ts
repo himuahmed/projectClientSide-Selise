@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
 
 import { AppComponent } from './app.component';
 
@@ -17,7 +20,10 @@ import { appRoutes } from './routes';
   imports: [
     RouterModule.forRoot(appRoutes),
     BookModule,
-    HomeModule
+    HomeModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatInputModule,
   ],
   bootstrap: [AppComponent]
 })

@@ -41,7 +41,7 @@ export class BooksAddbookComponent implements OnInit {
 
   addBookFormMethod(){
     return this.addBookForm =   this._formBuilder.group({
-      name:['',[Validators.required,Validators.minLength(1)]],
+      name:['',[Validators.required,Validators.minLength(5)]],
       author:['',[Validators.required,Validators.minLength(1)]],
       language:['',[Validators.required,Validators.minLength(1)]],
       pages:[Validators.required],
