@@ -44,7 +44,7 @@ export class BooksAddbookComponent implements OnInit {
       name:['',[Validators.required,Validators.minLength(5)]],
       author:['',[Validators.required,Validators.minLength(1)]],
       language:['',[Validators.required,Validators.minLength(1)]],
-      pages:[Validators.required],
+      pages:[,Validators.required],
       publishdate:[Validators.required],
     });
   }

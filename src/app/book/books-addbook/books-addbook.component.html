@@ -35,7 +35,7 @@
             Name should at least 4 characters long.
           </mat-error>
           <mat-error *ngIf="book.get('language').touched && book.get('language').hasError('required')">
-            Author name is <strong>required.</strong>
+            Language is <strong>required.</strong>
           </mat-error>
         </mat-form-field>
 
@@ -43,7 +43,7 @@
           <mat-label>Total page</mat-label>
           <input type="number" matInput [formControl]="book.get('pages')" placeholder="Total Page">
           <mat-error *ngIf="book.get('pages').touched && book.get('pages').hasError('required')">
-            Author name is <strong>required.</strong>
+            Enter total pages.
           </mat-error>
         </mat-form-field>
 
@@ -61,5 +61,5 @@
     </div>
   </div>
   <button  type="button" (click)="addNewBookForm()" mat-flat-button color="primary">Add New Record</button>
-  <button [disabled]="!booksToBeInserted.valid" type="submit" mat-flat-button color="accent" >Save Books</button>
+  <button [disabled]="!booksToBeInserted.valid" type="submit" mat-flat-button color="success" >Save Books</button>
 </form>
