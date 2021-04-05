@@ -26,7 +26,7 @@ export class BookService {
     return this.http.get<book>(this.baseurl+'getbook/'+id);
   }
 
-  addBook(book:book)
+  addBook(book:book[])
   {
     return this.http.post(this.baseurl+'addbook', book);
   }

@@ -15,7 +15,7 @@ import { BookService } from '../../services/book.service';
 })
 export class BooksAddbookComponent implements OnInit {
   unsubscribe$ = new Subject();
-  book: book;
+  book: book[]=[];
   booksToBeInserted: FormGroup;
   addBookForm: FormGroup;
 
@@ -60,25 +60,20 @@ export class BooksAddbookComponent implements OnInit {
   deleteBookFromArray(bookIndex: number){
     this.bookFormArray.removeAt(bookIndex);
   }
-
-  showRecords()
-  {
-    console.log(this.booksToBeInserted.value);
-  }
-
+  
   addBook()
   {
-    this.book = Object.assign({},this.addBookForm.value);
-    var date = new Date(this.book.publishdate);
-    let newDate = JSON.stringify(date);
-    newDate = newDate.slice(1,11);
-    newDate = new Date(newDate).toISOString();
-    this.book.publishdate = newDate;
-    
-    console.log(this.book);
+    //this.book = Object.assign({},this.booksToBeInserted.value);
+    //var date = new Date(this.book.publishdate);
+   // let newDate = JSON.stringify(date);
+    //newDate = newDate.slice(1,11);
+    //newDate = new Date(newDate).toISOString();
+   // this.book.publishdate = newDate;
+    this.book = this.bookFormArray.value;
     this._bookservice.addBook(this.book).pipe(takeUntil(this.unsubscribe$)).subscribe(()=>{
       alert("Book Added.");
-      this.addBookForm.reset();
+      this.booksToBeInserted.reset();
+      this.booksArrayFormMethod();    
     },error=>{
       alert("Failed to add book.");
     });

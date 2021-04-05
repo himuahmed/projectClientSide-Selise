@@ -1,4 +1,4 @@
-<form [formGroup]="booksToBeInserted" (ngSubmit)="showRecords()" class="mt">
+<form [formGroup]="booksToBeInserted" (ngSubmit)="addBook()" class="mt">
   <div formArrayName="booksArray">
     <div *ngFor="let book of booksToBeInserted.controls.booksArray['controls']; let i=index" [formGroupName]='i'>
       <mat-card class="mb">
@@ -21,7 +21,7 @@
           <mat-label>Author name</mat-label>
           <input type="text" matInput [formControl]="book.get('author')" placeholder="Author name.">
           <mat-error *ngIf="book.get('author').hasError('minlength') && book.get('author').touched">
-            Name should at least 4 characters long.
+            Name should be at least 4 characters long.
           </mat-error>
           <mat-error *ngIf="book.get('author').touched && book.get('author').hasError('required')">
             Author name is <strong>required.</strong>
