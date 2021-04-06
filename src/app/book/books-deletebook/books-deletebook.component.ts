@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Subject } from 'rxjs';
@@ -12,7 +12,7 @@ import { BookService } from '../../services/book.service';
   templateUrl: './books-deletebook.component.html',
   styleUrls: ['./books-deletebook.component.css']
 })
-export class BooksDeletebookComponent implements OnInit {
+export class BooksDeletebookComponent implements OnInit,OnDestroy {
   unsubscribe$ = new Subject();
   @Input() id:number;
   @Input() bookName:string;

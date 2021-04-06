@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 
@@ -14,7 +14,7 @@ import { ProgressSpinnerService } from 'src/app/services/progressSpinner.service
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.css']
 })
-export class BooksComponent implements OnInit {
+export class BooksComponent implements OnInit,OnDestroy {
 
   unsubscribe$ = new Subject()
   books: book[]=[];

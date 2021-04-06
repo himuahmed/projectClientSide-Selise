@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
@@ -13,7 +13,7 @@ import { BookService } from '../../services/book.service';
   templateUrl: './books-editbook.component.html',
   styleUrls: ['./books-editbook.component.css']
 })
-export class BooksEditbookComponent implements OnInit {
+export class BooksEditbookComponent implements OnInit,OnDestroy {
   unsubscribe$ = new Subject();
   book:book;
   editBookForm: FormGroup;

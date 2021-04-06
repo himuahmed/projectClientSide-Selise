@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { Login } from 'src/app/models/login';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
@@ -9,8 +11,8 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-
+export class LoginComponent implements OnInit, OnDestroy {
+  unsubscribe$ = new Subject();
   loginForm: FormGroup;
   loginModel: Login;
 
@@ -18,6 +20,11 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginFormMethod();
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   
@@ -31,7 +38,7 @@ export class LoginComponent implements OnInit {
   login(){
     this.loginModel = Object.assign({}, this.loginForm.value);
     console.log(this.loginModel);
-    this.authenticationService.login(this.loginModel).subscribe(next=>{
+    this.authenticationService.login(this.loginModel).pipe(takeUntil(this.unsubscribe$)).subscribe(next=>{
       alert("Log in successful.");
       this.router.navigate(['/books']);
     }, error=>{
