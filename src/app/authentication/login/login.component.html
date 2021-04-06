@@ -1,0 +1,32 @@
+
+
+<mat-card class="mb">
+  <mat-card-title class="text-center">       
+      Sign In
+  </mat-card-title>
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input type="text" matInput [formControl]="loginForm.get('email')" placeholder="">
+        <mat-error *ngIf="loginForm.get('email').hasError('email') && loginForm.get('email').touched">
+          Enter a valid email.
+        </mat-error>
+        <mat-error *ngIf="loginForm.get('email').touched && loginForm.get('email').hasError('required')">
+          Email is <strong>required.</strong>
+        </mat-error>
+      </mat-form-field> <br>
+
+
+      <mat-form-field class="example-full-width mb">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput [formControl]="loginForm.get('password')" placeholder="">
+        <mat-error *ngIf="loginForm.get('password').touched && loginForm.get('password').hasError('required')">
+          Enter <strong>Password.</strong>
+        </mat-error>
+      </mat-form-field>
+       <br>
+      <button [disabled]="!loginForm.valid" type="submit" mat-flat-button color="success" >Login</button> 
+      <a [routerLink]="['/auth/signup']" >Sign Up</a>
+</form>
+</mat-card>

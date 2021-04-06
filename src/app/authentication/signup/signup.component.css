@@ -1,0 +1,23 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  button {
+    margin-right: 8px;
+  }
+
+  .mat-success {
+    background-color:rgb(44, 150, 44);
+    color: #fff;
+}
+
+.mat-card {
+    min-width: 100px;
+    max-width: 500px;
+    margin:auto;
+  }

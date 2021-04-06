@@ -15,7 +15,7 @@ import { book } from '../models/book';
 export class BookService {
 
   books:book;
-  baseurl = environment.apiUrl;
+  baseurl = environment.apiUrl+'book/';
   constructor(private http:HttpClient) { }
 
   getAllBooks():Observable<book[]>{

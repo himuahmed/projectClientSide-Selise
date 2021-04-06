@@ -1,9 +1,16 @@
 <mat-card class="mt">
-  <mat-card-content>
-    <p>Would you like to delete the book "<strong>{{bookName}}</strong>" ?</p>
-  </mat-card-content>
-  <mat-card-footer>
-    <button mat-flat-button color="warn" (click)="deleteBook()">Confirm</button>
-    <button mat-flat-button color="primary" (click)="cancel()">Cancel</button>
-  </mat-card-footer>
+  <div *ngIf="isLoggedIn()" class="mt">
+    <mat-card-content>
+      <p>Would you like to delete the book "<strong>{{bookName}}</strong>" ?</p>
+    </mat-card-content>
+    <mat-card-footer>
+      <button mat-flat-button color="warn" (click)="deleteBook()">Confirm</button>
+      <button mat-flat-button color="primary" (click)="cancel()">Cancel</button>
+    </mat-card-footer>
+  </div>
+  <div>
+    <mat-card-content *ngIf="!isLoggedIn()" class="mt">
+      <h3>You are not authorized to delete the book.</h3>
+    </mat-card-content>
+  </div>
 </mat-card>

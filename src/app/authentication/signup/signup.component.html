@@ -1,0 +1,69 @@
+
+<mat-card class="mb">
+  <mat-card-title class="text-center">       
+      Sign Up
+  </mat-card-title>
+
+  <form [formGroup]="signUpForm" (ngSubmit)="signup()">
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Name</mat-label>
+      <input type="text" matInput [formControl]="signUpForm.get('name')" placeholder="">
+      <mat-error *ngIf="signUpForm.get('name').hasError('name') && signUpForm.get('name').touched">
+        Enter a valid name.
+      </mat-error>
+      <mat-error *ngIf="signUpForm.get('name').touched && signUpForm.get('name').hasError('required')">
+        Name is <strong>required.</strong>
+      </mat-error>
+    </mat-form-field> <br>
+  
+    <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input type="text" matInput [formControl]="signUpForm.get('email')" placeholder="">
+        <mat-error *ngIf="signUpForm.get('email').hasError('email') && signUpForm.get('email').touched">
+          Enter a valid email.
+        </mat-error>
+        <mat-error *ngIf="signUpForm.get('email').touched && signUpForm.get('email').hasError('required')">
+          Email is <strong>required.</strong>
+        </mat-error>
+      </mat-form-field> <br>
+  
+  
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput [formControl]="signUpForm.get('password')" placeholder="">
+        <mat-error *ngIf="signUpForm.get('password').touched && signUpForm.get('password').hasError('required')">
+          Enter <strong>Password.</strong>
+        </mat-error>
+        <mat-error *ngIf="signUpForm.get('password').touched && signUpForm.get('password').hasError('minlength')">
+          Password should be at least 6 character long.
+        </mat-error>
+        <mat-error *ngIf="signUpForm.get('password').touched && signUpForm.get('password').hasError('maxlength')">
+          Password should be less than 21 character.
+        </mat-error>
+      </mat-form-field>
+       <br>
+  
+       <mat-form-field class="example-full-width mb">
+        <mat-label>Confirm Password</mat-label>
+        <input type="password" matInput [formControl]="signUpForm.get('confirmPassword')" placeholder="">
+        <mat-error *ngIf="signUpForm.get('confirmPassword').hasError('mismatch')">
+          Password didn't match.
+        </mat-error>
+        <mat-error *ngIf="signUpForm.get('confirmPassword').touched && signUpForm.get('confirmPassword').hasError('required')">
+          Confirm <strong>Password.</strong>
+        </mat-error>
+        <mat-error *ngIf="signUpForm.get('confirmPassword').touched && signUpForm.get('confirmPassword').hasError('minlength')">
+          Password should be at least 6 character long.
+        </mat-error>
+        <mat-error *ngIf="signUpForm.get('confirmPassword').touched && signUpForm.get('confirmPassword').hasError('maxlength')">
+          Password should be less than 21 character.
+        </mat-error>
+      </mat-form-field><br>
+  
+      <button [disabled]="!signUpForm.valid" type="submit" mat-flat-button color="success" >Login</button> 
+      <a [routerLink]="['/auth/signup']" >Sign Up</a>
+  </form>
+  
+
+  </mat-card>
