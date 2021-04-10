@@ -1,9 +1,8 @@
 <section>
   <mat-toolbar color="primary">
     <span class="mr"><b>Book Records</b></span>
-    <a mat-button [routerLink]="['']" class="ml-3">Home</a>
-    <a mat-button [routerLink]="['books']"  class="ml-3">Book List</a>
-    <a mat-button [routerLink]="['books/addbook']"  class="ml-3">Add New Book</a>
+    <a mat-button [routerLink]="['']" class="ml-3">Books</a>
+    <a mat-button [routerLink]="['/addbook']"  class="ml-3">Add New Book</a>
     <span class="link-spacer"></span>
     <div *ngIf="!isLoggedIn()">
       <button mat-button [matMenuTriggerFor]="beforeMenu">Login/Register</button>

@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { BooksAddbookComponent } from './books-addbook.component';
 
@@ -8,7 +9,8 @@ describe('BooksAddbookComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BooksAddbookComponent ]
+      declarations: [ BooksAddbookComponent ],
+      imports:[ReactiveFormsModule]
     })
     .compileComponents();
   });

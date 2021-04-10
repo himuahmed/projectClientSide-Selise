@@ -3,8 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { Registration } from 'src/app/models/registration';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+
+import { AuthenticationService } from 'src/app/authentication/services/authentication.service';
+import { Registration } from '../../interfaces/registration';
 
 @Component({
   selector: 'app-signup',

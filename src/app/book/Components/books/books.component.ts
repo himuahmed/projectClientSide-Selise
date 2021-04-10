@@ -2,12 +2,13 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 
-import { BookService } from 'src/app/services/book.service';
-import { book } from 'src/app/models/book';
+import { BookService } from 'src/app/book/services/book.service';
+
 
 import { interval, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ProgressSpinnerService } from 'src/app/services/progressSpinner.service';
+import { book } from '../../interfaces/book';
 
 @Component({
   selector: 'app-books',

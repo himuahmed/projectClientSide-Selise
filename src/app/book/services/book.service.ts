@@ -4,8 +4,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
+import { book } from '../interfaces/book';
 
-import { book } from '../models/book';
+
 
 
 

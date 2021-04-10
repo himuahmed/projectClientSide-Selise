@@ -15,13 +15,13 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatCardModule} from '@angular/material/card';
 
 import { BookComponent } from './book.component';
-import { BooksComponent } from './books/books.component';
-import { BooksAddbookComponent } from './books-addbook/books-addbook.component';
-import { BooksEditbookComponent } from './books-editbook/books-editbook.component';
-import { BooksDeletebookComponent } from './books-deletebook/books-deletebook.component';
+import { BooksComponent } from './Components/books/books.component';
+import { BooksAddbookComponent } from './Components/books-addbook/books-addbook.component';
+import { BooksEditbookComponent } from './Components/books-editbook/books-editbook.component';
+import { BooksDeletebookComponent } from './Components/books-deletebook/books-deletebook.component';
 import {MatBadgeModule} from '@angular/material/badge';
 
-import { BookService } from '../services/book.service';
+import { BookService } from './services/book.service';
 
 import { BookRoutes } from './book.routing';
 import { ProgressSpinnerService } from '../services/progressSpinner.service';

@@ -3,8 +3,9 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { book } from '../../interfaces/book';
 
-import { book } from '../../models/book';
+
 import { BookService } from '../../services/book.service';
 
 

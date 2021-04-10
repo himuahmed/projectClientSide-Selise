@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { Login } from '../models/login';
-import { Registration } from '../models/registration';
+import { Login } from '../interfaces/login';
+import { Registration } from '../interfaces/registration';
+
 
 @Injectable({
   providedIn: 'root'

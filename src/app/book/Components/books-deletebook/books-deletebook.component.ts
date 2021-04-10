@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+import { AuthenticationService } from 'src/app/authentication/services/authentication.service';
+import { BookService } from 'src/app/book/services/book.service';
 
-import { BookService } from '../../services/book.service';
+
 
 @Component({
   selector: 'app-books-deletebook',

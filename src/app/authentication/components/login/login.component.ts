@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { Login } from 'src/app/models/login';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Login } from 'src/app/authentication/interfaces/login';
+import { AuthenticationService } from 'src/app/authentication/services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     console.log(this.loginModel);
     this.authenticationService.login(this.loginModel).pipe(takeUntil(this.unsubscribe$)).subscribe(next=>{
       alert("Log in successful.");
-      this.router.navigate(['/books']);
+      this.router.navigate(['']);
     }, error=>{
       alert('Failed to log in');
     }

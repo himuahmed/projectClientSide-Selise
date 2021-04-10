@@ -8,7 +8,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { AppComponent } from './app.component';
 
 import { BookModule } from './book/book.module';
-import { HomeModule } from './home/home.module';
+
 
 import { appRoutes } from './routes';
 import { AuthenticationModule } from './authentication/authentication.module';
@@ -25,7 +25,6 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
   imports: [
     RouterModule.forRoot(appRoutes),
     BookModule,
-    HomeModule,
     CommonModule,
     AuthenticationModule,
     MatToolbarModule,

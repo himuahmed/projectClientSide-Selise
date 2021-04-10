@@ -4,8 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { book } from '../../interfaces/book';
 
-import { book } from '../../models/book';
+
 import { BookService } from '../../services/book.service';
 
 @Component({
