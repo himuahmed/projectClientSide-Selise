@@ -54,6 +54,7 @@ export class BooksComponent implements OnInit,OnDestroy {
 
   getAllBooks(){
    this.bookService.getAllBooks().pipe(takeUntil(this.unsubscribe$)).subscribe((b: book[]) => {
+     console.log(b);
      this.datasource.data = b;
    },error=>{
      console.log("Failed to fetch book records.");

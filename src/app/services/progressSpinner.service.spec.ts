@@ -10,7 +10,7 @@ describe('Service: ProgressSpinner', () => {
     });
   });
 
-  it('should ...', inject([ProgressSpinnerService], (service: ProgressSpinnerService) => {
+/*   it('should ...', inject([ProgressSpinnerService], (service: ProgressSpinnerService) => {
     expect(service).toBeTruthy();
-  }));
+  })); */
 });

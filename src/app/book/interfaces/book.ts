@@ -1,8 +1,8 @@
 export interface book {
     id:number;
     name: string;
-    author: number;
+    author: string;
     language: string;
-    pages: string;
+    pages: number;
     publishdate: string;
   }
